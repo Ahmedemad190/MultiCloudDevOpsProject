@@ -1,0 +1,13 @@
+---
+- name: ivolve-final
+  hosts: webserver
+  remote_user: ubuntu
+  gather_facts: false
+  become: true
+
+  roles:
+     - sonarqube
+     - docker
+     - jenkins
+     -openshift
+     -git
