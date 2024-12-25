@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivolve-project-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ivolve-project
+  template:
+    metadata:
+      labels:
+        app: ivolve-project
+    spec:
+      containers:
+      - name: jenkins-project
+        image: 3omda1/final-project:latest
+        ports:
+        - containerPort: 8081
