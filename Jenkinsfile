@@ -1,9 +1,12 @@
 @Library('shared-lib') _
 pipeline {
     agent any
-    
+    tools {
+        gradle 'gradle'
+        
+    }
     environment {
-        SCANNER_HOME           = tool 'Maven'
+        SCANNER_HOME           = tool 'gradle'
         dockerHubCredentialsID = 'docker-cred'                          // DockerHub credentials ID.
         imageName              = '3omda1/final-project'                  // DockerHub repo/image name.
         openshiftCredentialsID = 'oc-cred'                               // Service account token credentials ID
