@@ -3,7 +3,7 @@ pipeline {
     agent any
     
     environment {
-	      SCANNER_HOME           = tool 'sonarqube-server'
+	SCANNER_HOME           = tool 'sonarqube-server'
         dockerHubCredentialsID = 'docker-cred'                          // DockerHub credentials ID.
         imageName              = '3omda1/final-project'            // DockerHub repo/image name.
         openshiftCredentialsID = 'oc-cred'                    // Service account token credentials ID
