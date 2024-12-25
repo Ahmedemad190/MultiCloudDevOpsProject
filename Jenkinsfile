@@ -1,4 +1,4 @@
-@Library('shared-lib') _
+@Library('shared-lib')_
 pipeline {
     agent any
     
@@ -7,27 +7,24 @@ pipeline {
         dockerHubCredentialsID = 'docker-cred'                          // DockerHub credentials ID.
         imageName              = '3omda1/final-project'            // DockerHub repo/image name.
         openshiftCredentialsID = 'oc-cred'                    // Service account token credentials ID
-        openshiftClusterURL    = 'https://api.ocp-training.ivolve-test.com:6443' // OpenShift Cluster URL.
+        openshiftClusterURL    = ' https://api.ocp-training.ivolve-test.com:6443' // OpenShift Cluster URL.
         openshiftProject       = 'ahmedemad'                         // OpenShift project name.
     }
 
     stages {
         stage('Repo Checkout') {
            steps {
-              stage('checkout'){
-            steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Ahmedemad190/MultiCloudDevOpsProject.git']])
+            	script {
+                	gitcheckout()
+                }
             }
         }
-
 
         stage('Run Unit Test') {
             steps {
                 script {
                 	// Navigate to the directory contains the Application
-                    def mvn = tool 'Maven';
-                    withSonarQubeEnv(installationName: 'sonarqube-server') {
-                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=devops-working -Dsonar.projectName='devops-working'"                	
+                	dir('application') {
                 		unitTests()
             		}
         	   }
@@ -38,9 +35,8 @@ pipeline {
             steps {
                 script {
                     	// Navigate to the directory contains the Application
-                    def mvn = tool 'Maven';
-                    withSonarQubeEnv(installationName: 'sonarqube-server') {
-                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=devops-working -Dsonar.projectName='devops-working'"                    		sonarQubeAnalysis()
+                    	dir('application') {
+                    		sonarQubeAnalysis()
                     	}
                     }
                 }
