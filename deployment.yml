@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ivolve-project-deployment
+  name: ivolve-project-deployment-last
 spec:
   replicas: 2
   selector:
