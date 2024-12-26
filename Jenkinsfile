@@ -7,8 +7,8 @@ pipeline {
     }
     environment {
         SCANNER_HOME           = tool 'gradle'
-        dockerHubCredentialsID = 'final'                          // DockerHub credentials ID.
-        imageName              = '3omda1/final-project'                  // DockerHub repo/image name.
+        dockerHubCredentialsID = 'final-2'                          // DockerHub credentials ID.
+        imageName              = '3omda2/final-project'                  // DockerHub repo/image name.
         openshiftCredentialsID = 'oc-cred'                               // Service account token credentials ID
         openshiftClusterURL    = 'https://api.ocp-training.ivolve-test.com:6443' // OpenShift Cluster URL.
         openshiftProject       = 'ahmedemad'                             // OpenShift project name.
