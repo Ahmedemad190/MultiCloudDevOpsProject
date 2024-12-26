@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ivolve-project-deployment-last
+  name: ivolve-project-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ivolve-project-deployment-last
+      app: ivolve-project
   template:
     metadata:
       labels:
-        app: ivolve-project-deployment-last
+        app: ivolve-project
     spec:
       containers:
       - name: jenkins-project
