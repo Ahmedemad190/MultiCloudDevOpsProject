@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ivolve-project-service-last
+  name: ivolve-project-deployment-last
 spec:
   selector:
-    app: ivolve-project-last
+    app: ivolve-project-deployment-last
   ports:
     - protocol: TCP
       port: 8081
