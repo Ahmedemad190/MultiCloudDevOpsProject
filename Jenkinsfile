@@ -12,6 +12,7 @@ pipeline {
         openshiftCredentialsID = 'oc-cred'                               // Service account token credentials ID
         openshiftClusterURL    = 'https://api.ocp-training.ivolve-test.com:6443' // OpenShift Cluster URL.
         openshiftProject       = 'ahmedemad'                             // OpenShift project name.
+        cred = credentials('aws-key')
     }
 
     stages {
