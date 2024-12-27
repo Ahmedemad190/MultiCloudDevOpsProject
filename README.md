@@ -308,3 +308,12 @@ then
 
 ![image](https://github.com/user-attachments/assets/311df212-7623-4293-9db1-2c91716236f4)
 
+# 📑 Troubleeshot phase
+
+if the sonarQube webpage didn't apper after executing the playbook then go to /opt/sonarQube/<sonar_version>/sonar.log it should look like that 
+![image](https://github.com/user-attachments/assets/57ee5e6c-645e-45e2-b2ca-f77b68778b8d)
+
+if not make sure that 
+1. elsatic search is up and running not in the waiting state ▶️ check this in /opt/sonarQube/<sonar_version>/nohub.log
+
+
