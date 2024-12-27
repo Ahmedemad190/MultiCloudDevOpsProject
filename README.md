@@ -240,3 +240,5 @@ for docker
 mange jenkins --> credentials ---> add cred --> kind username and password  
 in the username enter ur username 
 and in the password create a docker token from docker console 
+and generate token for github the same as docker 
+click on ur profile pic from the github console --->settings ---> Devolper options --> personal access token ---> Tokens (classic)
