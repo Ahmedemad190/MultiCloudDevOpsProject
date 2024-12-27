@@ -262,3 +262,6 @@ create openshift token create with admin privilage
 create a cred for sonarqube 
 click on ur logo ---> Myaccount --> security 
 ![image](https://github.com/user-attachments/assets/9da9f62e-f8e5-40e4-adb9-00b49ea53eb3)
+copy the token 
+go to 
+mange jenkins --> cred ---> add cred ---> secert text ---> paste teh token 
