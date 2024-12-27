@@ -164,7 +164,6 @@ this is the strcutre
     │   └── test.yml
     └── vars
         └── main.yml
-
 ```
 we will create a role for docker and jenkisn and git and openshift and sonarqube 
 
@@ -223,3 +222,8 @@ docker --version
 do the same for all packages 
 > [!IMPORTANT]
 > the all files should be in the same directory 📁
+
+
+then let's begin with jenkins work 
+enter the secert key for jenkins 
+![last](https://github.com/user-attachments/assets/6f7c5f59-3307-46b6-aa30-da0ce9140ed1)
