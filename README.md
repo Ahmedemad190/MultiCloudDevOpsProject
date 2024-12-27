@@ -207,3 +207,8 @@ become_method = sudo
 become_user = root
 become_ask_pass = false
 ```
+execute the playbook with 
+```
+ansible-playbook -i inventory playbook.yml
+
+```
