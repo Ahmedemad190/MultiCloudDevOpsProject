@@ -185,4 +185,10 @@ roles/
           └── main.yml
 ```
 
-You can find the roles here [Roles](https://github.com/Ahmedemad190/MultiCloudDevOpsProject/tree/main/Ansible)
+You can find the roles here [Roles](https://github.com/Ahmedemad190/MultiCloudDevOpsProject/tree/main/Ansible) 
+create the inventory file in which the playbook will execute in 
+it should look like this 
+```
+[webserver]
+[machine_IP]  ansible_user=ubuntu ansible_ssh_private_key_file=<path/to/private/key>
+```
