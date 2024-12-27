@@ -316,4 +316,6 @@ if the sonarQube webpage didn't apper after executing the playbook then go to /o
 if not make sure that 
 1. elsatic search is up and running not in the waiting state ▶️ check this in /opt/sonarQube/<sonar_version>/nohub.log
 
+# The pipline 
+
 
