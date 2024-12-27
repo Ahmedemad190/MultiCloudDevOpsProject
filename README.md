@@ -192,3 +192,18 @@ it should look like this
 [webserver]
 [machine_IP]  ansible_user=ubuntu ansible_ssh_private_key_file=<path/to/private/key>
 ```
+create the ansible.cfg 
+it should look like that 
+```
+[defaults]
+timeout = 30
+remote_user = ubuntu
+private_key_file = 
+host_key_checking = False
+
+[privilege_escalation]
+become = true
+become_method = sudo
+become_user = root
+become_ask_pass = false
+```
