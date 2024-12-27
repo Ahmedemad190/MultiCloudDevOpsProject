@@ -207,7 +207,7 @@ become_method = sudo
 become_user = root
 become_ask_pass = false
 ```
-execute the playbook with 
+execute the playbook with 🪄
 ```
 ansible-playbook -i inventory playbook.yml
 
@@ -219,5 +219,6 @@ check if the package installed with
 such as 
 ```
 docker --version
-```
 
+```
+:x: the all files should be in the same directory 📁
