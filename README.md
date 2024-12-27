@@ -264,4 +264,8 @@ click on ur logo ---> Myaccount --> security
 ![image](https://github.com/user-attachments/assets/9da9f62e-f8e5-40e4-adb9-00b49ea53eb3)
 copy the token 
 go to 
-mange jenkins --> cred ---> add cred ---> secert text ---> paste teh token 
+mange jenkins --> cred ---> add cred ---> secert text ---> paste the token 
+
+- create the jenkins shared library
+go to mange jenkins ----> system ---> add the repo link and the name to call it into the pipeline
+![image](https://github.com/user-attachments/assets/67289e17-d70a-42e0-a505-389c33be20b9)
