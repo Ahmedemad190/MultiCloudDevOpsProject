@@ -184,3 +184,5 @@ roles/
       └── defaults/
           └── main.yml
 ```
+
+You can find the roles here (https://github.com/Ahmedemad190/MultiCloudDevOpsProject/tree/main/Ansible)
