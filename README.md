@@ -34,6 +34,7 @@ you can check terrafrom modules from here
 - becouse Manual configuration of infrastructure is error-prone and time-consuming. Terraform automates these processes and you can reuse the same code to build the infra or to modify it in few seconds with lines of code ⏰ 
 - it let you to keep track of ur infra changes
 - reduce human errors  💢
+- Terraform allows you to track and optimize resources and quickly destroy unused environments, reducing waste.
 
 :tada:[terrafrom modules](https://github.com/Ahmedemad190/MultiCloudDevOpsProject/tree/main/Terraform) 
 
@@ -43,6 +44,27 @@ and create a EC2 instance which we will install the required packages for the pr
 ### Why using ansible 
 then ansible for confgution mangement i have choosed ansible becouse its an 
 - agentless tool and simple to install it simply do what you will do in the terminal
-- secure becouse it depend on SSH connection
+- secure becouse it depend on SSH connection :key: 
 - cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration :computer: 
+so Ansible will install the required packages for us 📦
+Let's begin with how to isntall ansible 
 
+- update ur system 
+```
+sudo apt update && sudo apt upgrade -y
+```
+- Ansible is available in the official PPA (Personal Package Archive) maintained by the Ansible team.
+
+```
+sudo apt install -y software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+```
+
+- Last step tp install ansible
+```
+sudo apt install -y ansible
+```
+- verify ur install with
+```
+ansible -version
+```
