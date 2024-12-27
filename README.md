@@ -229,6 +229,10 @@ enter the secert key for jenkins
 ![last](https://github.com/user-attachments/assets/6f7c5f59-3307-46b6-aa30-da0ce9140ed1) 
 
 - First install the required plugins
+Mange jenkins --> Plugins ---> avalible plugins
+
+![image](https://github.com/user-attachments/assets/0f748eab-f5d8-44ec-a4f9-1b4bdbbe8c91)
+
 - pipeline
 - docker
 - credentials
@@ -241,4 +245,5 @@ mange jenkins --> credentials ---> add cred --> kind username and password
 in the username enter ur username 
 and in the password create a docker token from docker console 
 and generate token for github the same as docker 
-click on ur profile pic from the github console --->settings ---> Devolper options --> personal access token ---> Tokens (classic)
+click on ur profile pic from the github console --->settings ---> Devolper options --> personal access token ---> Tokens (classic) 
+
