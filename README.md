@@ -68,3 +68,7 @@ sudo apt install -y ansible
 ```
 ansible -version
 ```
+- create ansible role to install the required packages
+
+What is ansilbe roles ?
+Ansible roles are a way to organize and reuse automation tasks. They allow you to split your playbooks into smaller, reusable, and modular components. Each role contains tasks, variables, templates, handlers, and other elements needed to perform a specific automation task.
