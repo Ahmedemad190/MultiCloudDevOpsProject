@@ -246,4 +246,15 @@ in the username enter ur username
 and in the password create a docker token from docker console 
 and generate token for github the same as docker 
 click on ur profile pic from the github console --->settings ---> Devolper options --> personal access token ---> Tokens (classic) 
+create openshift token create with admin privilage 
+```
+     oc login https://api.ocp-training.ivolve-test.com:6443 --username=ahmedemad --password=nti1234#oc
+     oc get all
+     
+     oc create serviceaccount jenkins2
+     oc policy add-role-to-user admin system:serviceaccount:ahmedemad:jenkins2
+     oc sa get-token jenkins2
+```
+
+![image](https://github.com/user-attachments/assets/7531f3ff-aff4-416a-bbc1-60ea552a5692)
 
