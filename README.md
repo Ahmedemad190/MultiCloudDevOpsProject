@@ -221,4 +221,4 @@ such as
 docker --version
 
 ```
-:x: the all files should be in the same directory 📁
+> [!WARNING]  the all files should be in the same directory 📁
