@@ -301,3 +301,7 @@ then the SonarQube
 - Early Detection of Issues
 - Code Quality Monitoring :telescope: 
 - Continuous Integration and Continuous Delivery (CI/CD) Integration
+
+create a new project with ![image](https://github.com/user-attachments/assets/c7bcff21-5c8b-4b99-8026-13573fc15d54)
+then 
+![image](https://github.com/user-attachments/assets/3b60bba7-0f1d-4854-bac4-4b9f583b252e)
