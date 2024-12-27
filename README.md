@@ -39,4 +39,5 @@ and create a EC2 instance which we will install the required packages for the pr
 then ansible for confgution mangement i have choosed ansible becouse its an 
 - agentless tool and simple to install it simply do what you will do in the terminal
 - secure becouse it depend on SSH connection
--  cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration
+-  cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration :computer: 
+
