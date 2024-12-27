@@ -34,5 +34,9 @@ you can check terrafrom modules from here
 :tada:[terrafrom modules](https://github.com/Ahmedemad190/MultiCloudDevOpsProject/tree/main/Terraform) 
 - verfiy ur work go to aws console and search for the infrastucure you have provisioned
 we need to create a vpc with public subnet and enable map_public_ip so every instance will attach to it a public ip without mentioned it to the resource you provisone
-and create a EC2 instance which we will install the required packages for the project later on and create cloudwatch metric to send a mail if the therold exceeded SNS service will do it for you and the important thing is to store the .tfstate in the cloud in a s3 bucket :closed_lock_with_key:  
-then ansible for confgution mangement i have choosed ansible becouse its an agentless tool and simple to install it simply do what you will do in the terminal but it do it in efficinet way and in a secure way becouse of it depend on SSH connection to the desired machine with the private key u will determine to it in the inventory file it can also  cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration 
+and create a EC2 instance which we will install the required packages for the project later on and create cloudwatch metric to send a mail if the therold exceeded SNS service will do it for you and the important thing is to store the .tfstate in the cloud in a s3 bucket :closed_lock_with_key:
+## Why using ansible 
+then ansible for confgution mangement i have choosed ansible becouse its an 
+- agentless tool and simple to install it simply do what you will do in the terminal
+- secure becouse it depend on SSH connection
+-  cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration
