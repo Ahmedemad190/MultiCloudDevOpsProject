@@ -275,7 +275,6 @@ and add the sonarqube server ip as follwoing this stored in the same page
 ![image](https://github.com/user-attachments/assets/9912e6e5-b5fe-4583-a394-b401eb698fe8)
 
 ### Why using shared library 
-> [!IMPORTANT]
-> create script you can call it in different pipelines
-> Don't repeate ur code
-> reuse and modify it to suite ur needs 
+- create script you can call it in different pipelines
+- Don't repeate ur code
+- reuse and modify it to suite ur needs 
