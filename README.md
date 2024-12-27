@@ -212,3 +212,12 @@ execute the playbook with
 ansible-playbook -i inventory playbook.yml
 
 ```
+check if the package installed with 
+```
+<package_name> --version
+```
+such as 
+```
+docker --version
+```
+
