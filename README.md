@@ -277,4 +277,21 @@ and add the sonarqube server ip as follwoing this stored in the same page
 ### Why using shared library 
 - create script you can call it in different pipelines
 - Don't repeate ur code
-- reuse and modify it to suite ur needs 
+- reuse and modify it to suite ur needs
+
+you can find it here  [shared-lib](https://github.com/Ahmedemad190/shared-lib) 📝 
+the next step is to create a new agent for jenkins 
+in the agent machine install java version 17 
+```
+sudo apt install -y openjdk-17-jdk
+```
+in jenkins console 
+mange jenkins --->nodes---->new node 
+![image](https://github.com/user-attachments/assets/e96a32ff-070f-4620-a605-edaf99bc3992)
+
+then enter the agent's data 
+![image](https://github.com/user-attachments/assets/12e761f9-ad74-4c8b-8710-559928ef4195)
+name and the host ip address "Remote root directory" it means the place where the agent will place it's folder 
+in the credentals part enter it private key 🔐
+
+![image](https://github.com/user-attachments/assets/4a3c7d26-4544-45df-bc1d-87a951aa5ce9)
