@@ -226,4 +226,11 @@ do the same for all packages
 
 then let's begin with jenkins work 
 enter the secert key for jenkins 
-![last](https://github.com/user-attachments/assets/6f7c5f59-3307-46b6-aa30-da0ce9140ed1)
+![last](https://github.com/user-attachments/assets/6f7c5f59-3307-46b6-aa30-da0ce9140ed1) 
+
+- First install the required plugins
+- pipeline
+- docker
+- credentials
+- sonarqube scanner
+- aws credentials 
