@@ -296,3 +296,8 @@ in the credentals part enter it private key 🔐
 
 ![image](https://github.com/user-attachments/assets/4a3c7d26-4544-45df-bc1d-87a951aa5ce9)
 
+then the SonarQube 
+#### Why using SonarQube ?
+- Early Detection of Issues
+- Code Quality Monitoring :telescope: 
+- Continuous Integration and Continuous Delivery (CI/CD) Integration
