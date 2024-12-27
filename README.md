@@ -219,7 +219,7 @@ check if the package installed with
 such as 
 ```
 docker --version
-
 ```
+do the same for all packages 
 > [!IMPORTANT]
 > the all files should be in the same directory 📁
