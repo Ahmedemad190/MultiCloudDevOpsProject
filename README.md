@@ -291,7 +291,8 @@ mange jenkins --->nodes---->new node
 
 then enter the agent's data 
 ![image](https://github.com/user-attachments/assets/12e761f9-ad74-4c8b-8710-559928ef4195)
-name and the host ip address "Remote root directory" it means the place where the agent will place it's folder 
+name and the host ip address "Remote root directory" it means the place where the agent will place it's folder label "the name you call it with in the pipeline" 
 in the credentals part enter it private key 🔐
 
 ![image](https://github.com/user-attachments/assets/4a3c7d26-4544-45df-bc1d-87a951aa5ce9)
+
