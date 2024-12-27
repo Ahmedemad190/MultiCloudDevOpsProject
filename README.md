@@ -234,3 +234,9 @@ enter the secert key for jenkins
 - credentials
 - sonarqube scanner
 - aws credentials 
+
+add the credentials 
+for docker 
+mange jenkins --> credentials ---> add cred --> kind username and password  
+in the username enter ur username 
+and in the password create a docker token from docker console 
