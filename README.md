@@ -72,3 +72,115 @@ ansible -version
 
 What is ansilbe roles ?
 Ansible roles are a way to organize and reuse automation tasks. They allow you to split your playbooks into smaller, reusable, and modular components. Each role contains tasks, variables, templates, handlers, and other elements needed to perform a specific automation task.
+
+this is the strcutre 
+```
+├── ansible.cfg
+├── docker
+│   ├── defaults
+│   │   └── main.yml
+│   ├── files
+│   ├── handlers
+│   │   └── main.yml
+│   ├── meta
+│   │   └── main.yml
+│   ├── README.md
+│   ├── tasks
+│   │   └── main.yml
+│   ├── templates
+│   ├── tests
+│   │   ├── inventory
+│   │   └── test.yml
+│   └── vars
+│       └── main.yml
+├── git
+│   ├── defaults
+│   │   └── main.yml
+│   ├── files
+│   ├── handlers
+│   │   └── main.yml
+│   ├── meta
+│   │   └── main.yml
+│   ├── README.md
+│   ├── tasks
+│   │   └── main.yml
+│   ├── templates
+│   ├── tests
+│   │   ├── inventory
+│   │   └── test.yml
+│   └── vars
+│       └── main.yml
+├── grad_proj.pem
+├── inventory
+├── jenkins
+│   ├── defaults
+│   │   └── main.yml
+│   ├── files
+│   ├── handlers
+│   │   └── main.yml
+│   ├── meta
+│   │   └── main.yml
+│   ├── README.md
+│   ├── tasks
+│   │   └── main.yml
+│   ├── templates
+│   ├── tests
+│   │   ├── inventory
+│   │   └── test.yml
+│   └── vars
+│       └── main.yml
+├── openshift
+│   ├── defaults
+│   │   └── main.yml
+│   ├── files
+│   ├── handlers
+│   │   └── main.yml
+│   ├── meta
+│   │   └── main.yml
+│   ├── README.md
+│   ├── tasks
+│   │   └── main.yml
+│   ├── templates
+│   ├── tests
+│   │   ├── inventory
+│   │   └── test.yml
+│   └── vars
+│       └── main.yml
+├── playbook.yml
+└── sonarqube
+    ├── defaults
+    │   └── main.yml
+    ├── files
+    ├── handlers
+    │   └── main.yml
+    ├── meta
+    │   └── main.yml
+    ├── README.md
+    ├── tasks
+    │   └── main.yml
+    ├── templates
+    ├── tests
+    │   ├── inventory
+    │   └── test.yml
+    └── vars
+        └── main.yml
+
+```
+we will create a role for docker and jenkisn and git and openshift and sonarqube 
+
+to create a role 
+```
+ansible-galaxy init <role_name>
+```
+The folder strcurte will be as following 🚧 
+```
+
+roles/
+  └── docker/
+      ├── tasks/
+      │   └── main.yml
+      ├── vars/
+      │   └── main.yml
+      └── defaults/
+          └── main.yml
+```
