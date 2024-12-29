@@ -27,7 +27,6 @@ pipeline {
         stage('Run Unit Test') {
             steps {
                 script {
-                    // Navigate to the directory containing the Application
                     unitTests()
                 }
             }
@@ -36,7 +35,6 @@ pipeline {
         stage('Run SonarQube Analysis') {
             steps {
                 script {
-                    // Navigate to the directory containing the Application
                     sonarQubeAnalysis()
                 }
             }
@@ -46,7 +44,6 @@ pipeline {
             steps {
                 script {
                     
-                        // Navigate to the directory that contains Dockerfile
                         buildandpushDockerImage(dockerHubCredentialsID, imageName, BUILD_NUMBER)
                     
                 }
@@ -67,7 +64,7 @@ pipeline {
     post {
         always {
             echo "Pipeline completed."
-            cleanWs() // Clean workspace after the build is finished
+            cleanWs() 
         }
         success {
             echo "pipeline succeeded"
