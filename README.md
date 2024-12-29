@@ -336,6 +336,7 @@ Checkout Stage: Cloning the repository.
 - Docker
 - SonarQube scanner
 - Git
+
 💢 in the build.gradle make sure that
 this block exist
 ```
