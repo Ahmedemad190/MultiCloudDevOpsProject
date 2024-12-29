@@ -326,5 +326,24 @@ Checkout Stage: Cloning the repository.
 - Unit Testing: Running unit tests to ensure code quality.  :mag_right: 
 - SonarQube Analysis: Performing static code analysis.
 - Deployment to OpenShift: Deploying the application using deployment.yml and service.yml, with service exposure configured for accessibility.
+# Create shared library 
+- shared library is like the function in Programming which mean you can use this shared library when you need it
+- we use shared library for the routine and repated tasks 
 
-
+# 📑 Troubleeshot phase : 
+- Ensure that you have created the service account with administration role
+- install the required plugin for the process such as
+- Docker
+- SonarQube scanner
+- Git
+💢 in the build.gradle make sure that
+this block exist
+```
+sonarqube {
+    properties {
+        property "sonar.projectKey", "<project_key>"
+        property "sonar.projectName", "<project_name>"
+        property "sonar.java.source", "11"
+    }
+}
+```
