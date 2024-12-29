@@ -1,85 +1,91 @@
----
-# tasks file for sonarqube
-- name: Update APT cache
-  ansible.builtin.apt:
-    update_cache: yes
+# Update APT repositories and cache
+- name: Run sudo apt update
+  become: true
+  command: apt update
+  register: update_result
+  changed_when: "'Hit' not in update_result.stdout"
+  tags:
+    - update
 
-- name: Install all required packages for SonarQube and PostgreSQL
+# Install required packages
+- name: Install required packages
   apt:
     name:
-      - openjdk-17-jdk                # Required for SonarQube
-      - postgresql                    # PostgreSQL database
-      - acl                           # Access control list utilities
-      - unzip                         # Unzip utility
-      - python3                       # Python 3
-      - python3-pip                   # Pip for Python 3
-      - wget                          # For downloading SonarQube
-      - gnupg 
-      - python3-psycopg2        
-    state: present
-    update_cache: yes
+      - wget
+      - python3-psycopg2
+      - acl
+      - unzip
+      - tar
+    state: latest
 
+# Update APT repositories and cache on Debian/Ubuntu
 - name: Update APT repositories and cache on Debian/Ubuntu
   apt:
     update_cache: yes
     force_apt_get: yes
     cache_valid_time: 3600
 
+# Upgrade all packages
 - name: Upgrade all packages
   apt:
     upgrade: dist
     force_apt_get: yes
 
+# Set up Postgres 14 repo
 - name: Set up Postgres 14 repo
   shell: |
     echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
-- name: Install PostgreSQL 14
+# Install postgresql
+- name: Install postgresql
   apt:
     name: postgresql-14
-    state: present
     update_cache: yes
   notify:
-    - Start Postgresql
+    - Start PostgreSQL
 
+# Ensure PostgreSQL is listening on *
 - name: Ensure PostgreSQL is listening on *
   lineinfile:
     dest: /etc/postgresql/14/main/postgresql.conf
     regexp: '^listen_addresses\s*='
     line: "listen_addresses='*'"
     state: present
-  notify: Restart Postgresql
-    
-- name: Change password for the PostgreSQL user in OS
-  ansible.builtin.user:
-    name: "{{ my_postgres_user }}"
-    state: present
-    password: "{{ my_postgres_password }}"
+  notify: Restart PostgreSQL
 
-- name: Create Sonar User in PostgreSQL
-  become: yes
-  become_user: "{{ my_postgres_user }}"
-  postgresql_user:
-    name: "{{ psql_sonar_username }}"
-    password: "{{ psql_sonar_password }}"
-    role_attr_flags: CREATEDB,SUPERUSER,CREATEROLE
-    encrypted: yes
-    login_user: postgres
-    db: postgres
-  tags:
-    - user-add
-
+# Add new configuration to "pg_hba.conf"
 - name: Add new configuration to "pg_hba.conf"
   blockinfile:
     dest: /etc/postgresql/14/main/pg_hba.conf
     block: |
       host    all             all             0.0.0.0/0                md5
       host    all             all             ::/0                     md5
-      host    postgres       postgres         0.0.0.0/0                md5
-  notify: Restart Postgresql
+  notify:
+    - Restart PostgreSQL
 
+# Create a Superuser PostgreSQL database user
+- name: Create a Superuser PostgreSQL database user
+  become: true
+  become_user: postgres
+  postgresql_user:
+    name: "{{ psql_sonar_username }}"
+    password: "{{ psql_sonar_password }}"
+    role_attr_flags: CREATEDB,SUPERUSER,CREATEROLE
+    encrypted: yes
+    state: present
 
+# Create PostgreSQL database 'sonar'
+- name: Create PostgreSQL database 'sonar'
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: sonar
+    owner: "{{ psql_sonar_username }}"
+    encoding: UTF8
+    state: present
+
+# Install OpenJDK 17
 - name: Install OpenJDK 17
   apt:
     name: "{{ item }}"
@@ -87,21 +93,26 @@
   loop:
     - openjdk-17-jdk
 
+# Download SonarQube
 - name: Download SonarQube
   ansible.builtin.get_url:
-    url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.1.69595.zip
-    dest: /opt/{{ sonarqube_version }}.zip
+    url: "https://binaries.sonarsource.com/Distribution/sonarqube/{{ sonarqube_version }}.zip"
+    dest: "/opt/{{ sonarqube_version }}.zip"
+    mode: '0644'
   register: get_sonar
   tags:
     - sonar_download
 
-
-- name: Print the state of Download.
-  debug:
-    msg: "soner was downloaded"
-  when: get_sonar.changed
+# Extract SonarQube
+- name: Extract SonarQube
+  ansible.builtin.unarchive:
+    src: "/opt/{{ sonarqube_version }}.zip"
+    dest: /opt
+    remote_src: yes
   tags:
     - sonar_download
+
+# Ensure group "sonar" exists
 - name: Ensure group "sonar" exists
   ansible.builtin.group:
     name: sonar
@@ -109,17 +120,19 @@
   tags:
     - change-ownership-sonar
 
+# Add the user 'sonar' with a specific home directory and group 'sonar'
 - name: Add the user 'sonar' with a specific home directory and group 'sonar'
   ansible.builtin.user:
     name: sonar
     group: sonar
-    home: /opt/{{ sonarqube_version }}
+    home: "/opt/{{ sonarqube_version }}"
   tags:
     - change-ownership-sonar
 
+# Recursively change ownership of the /opt/{{ sonarqube_version }} directory
 - name: Recursively change ownership of the /opt/{{ sonarqube_version }} directory
   ansible.builtin.file:
-    path: /opt/{{ sonarqube_version }}
+    path: "/opt/{{ sonarqube_version }}"
     state: directory
     recurse: yes
     owner: sonar
@@ -127,22 +140,23 @@
   tags:
     - change-ownership-sonar
 
-- name: SonarQube configuration.
+# SonarQube configuration
+- name: SonarQube configuration
   blockinfile:
-    path: /opt/{{ sonarqube_version }}/conf/sonar.properties
+    path: "/opt/{{ sonarqube_version }}/conf/sonar.properties"
     state: present
     block: |
-      sonar.jdbc.username={{psql_sonar_username}}
-      sonar.jdbc.password={{psql_sonar_password}}
+      sonar.jdbc.username={{ psql_sonar_username }}
+      sonar.jdbc.password={{ psql_sonar_password }}
       sonar.web.host=0.0.0.0
-      sonar.web.port={{sonar_web_port}}
-      sonar.jdbc.url=jdbc:postgresql://localhost:5432/postgres
+      sonar.web.port={{ sonar_web_port }}
+      sonar.jdbc.url=jdbc:postgresql://localhost:5432/sonar
       sonar.web.javaAdditionalOpts=-server
       sonar.log.level=INFO
       sonar.path.logs=logs
 
-
-- name: This file is required for SonarQube to run as a service.
+# SonarQube systemd service
+- name: Create SonarQube systemd service
   blockinfile:
     path: /etc/systemd/system/sonar.service
     create: true
@@ -163,5 +177,21 @@
       LimitNPROC=4096
       [Install]
       WantedBy=multi-user.target
-  notify:
-    - Start sonar
+  notify: 
+    - Start Sonar
+- name: Start PostgreSQL
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+
+- name: Restart PostgreSQL
+  service:
+    name: postgresql
+    state: restarted
+
+- name: Start Sonar
+  systemd:
+    name: sonar
+    state: started
+    enabled: yes
