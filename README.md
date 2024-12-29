@@ -316,6 +316,15 @@ if the sonarQube webpage didn't apper after executing the playbook then go to /o
 if not make sure that 
 1. elsatic search is up and running not in the waiting state ▶️ check this in /opt/sonarQube/<sonar_version>/nohub.log
 
-# The pipline 
+# The pipline step 
+
+For this step  i used jenkins for creating effieciet CI/CD pipelineg
+To integrate and automate the workflow, I configured a Jenkins pipeline with the following stages:
+
+Checkout Stage: Cloning the repository.
+Build and Push: Building and pushing a Docker image to a container registry.⚓
+Unit Testing: Running unit tests to ensure code quality.:mag_right: 
+SonarQube Analysis: Performing static code analysis.
+Deployment to OpenShift: Deploying the application using deployment.yml and service.yml, with service exposure configured for accessibility.
 
 
