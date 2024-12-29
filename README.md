@@ -348,3 +348,4 @@ sonarqube {
     }
 }
 ```
+- Create a token to access github create it with the required privilage to ensure the connection 
