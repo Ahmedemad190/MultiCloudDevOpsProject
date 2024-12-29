@@ -322,9 +322,9 @@ For this step  i used jenkins for creating effieciet CI/CD pipelineg
 To integrate and automate the workflow, I configured a Jenkins pipeline with the following stages:
 
 Checkout Stage: Cloning the repository.
-Build and Push: Building and pushing a Docker image to a container registry.⚓
-Unit Testing: Running unit tests to ensure code quality.  :mag_right: 
-SonarQube Analysis: Performing static code analysis.
-Deployment to OpenShift: Deploying the application using deployment.yml and service.yml, with service exposure configured for accessibility.
+- Build and Push: Building and pushing a Docker image to a container registry.⚓
+- Unit Testing: Running unit tests to ensure code quality.  :mag_right: 
+- SonarQube Analysis: Performing static code analysis.
+- Deployment to OpenShift: Deploying the application using deployment.yml and service.yml, with service exposure configured for accessibility.
 
 
