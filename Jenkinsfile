@@ -70,10 +70,10 @@ pipeline {
             cleanWs() // Clean workspace after the build is finished
         }
         success {
-            echo "${JOB_NAME}-${BUILD_NUMBER} pipeline succeeded"
+            echo "pipeline succeeded"
         }
         failure {
-            echo "${JOB_NAME}-${BUILD_NUMBER} pipeline failed"
+            echo "pipeline failed"
         }
     }
 }
